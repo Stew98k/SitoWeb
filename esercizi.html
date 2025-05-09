@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esercizi fisici – MindFit</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root{
+      --petto:#e74c3c;--schiena:#3498db;--gambe:#27ae60;--spalle:#e67e22;--braccia:#9b59b6;--addome:#f1c40f;
+    }
+
+    /* ------------------ RESET & GLOBAL ------------------ */
+    html{scroll-behavior:smooth}
+    body{background:#fafafa;font-family:"Poppins",sans-serif;}
+
+    /* ------------------ HERO ------------------ */
+    .hero{position:relative;width:100%;height:42vh;min-height:320px;background:url("img/hero.jpg") center/cover no-repeat;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25) 60%,rgba(0,0,0,.65));}
+    .hero-content{position:relative;z-index:1;text-align:center;color:#fff;display:flex;flex-direction:column;gap:12px;padding:0 20px;}
+    .hero-content h2{font-size:clamp(28px,6vw,48px);font-weight:800;margin:0;letter-spacing:.5px;}
+    .hero-content p{font-size:clamp(16px,2.7vw,20px);margin:0 0 12px;opacity:.9;}
+    .hero-btn{display:inline-block;padding:12px 28px;border-radius:30px;background:#ffffffbb;color:#222;font-weight:600;text-decoration:none;backdrop-filter:blur(4px);transition:.3s;}
+    .hero-btn:hover{background:#fff;color:#000;transform:translateY(-3px);}
+
+    /* ------------------ WRAPPER / HEADING ------------------ */
+    .exercise-groups{max-width:1000px;margin:80px auto;padding:0 20px 120px;display:flex;flex-direction:column;gap:48px;}
+    .page-heading{text-align:center;font-size:40px;font-weight:800;background:linear-gradient(90deg,var(--petto),var(--schiena));-webkit-background-clip:text;background-clip:text;color:transparent;margin:0 0 32px;}
+    #search{align-self:center;width:60%;max-width:360px;padding:10px 16px;border-radius:24px;border:2px solid #ddd;font-size:15px;}
+
+    /* ------------------ GROUP CARDS ------------------ */
+    .group{border-radius:28px;padding:36px 28px;box-shadow:0 8px 26px rgba(0,0,0,.07);backdrop-filter:blur(3px);}
+    .group-title{margin:0 0 26px;font-size:30px;font-weight:700;display:flex;align-items:center;gap:8px;color:var(--accent);}
+    .group-exercises{display:flex;flex-direction:column;gap:16px;}
+    .exercise-item{width:100%;border:none;border-radius:18px;padding:18px 16px;text-align:center;font-size:16px;font-weight:600;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s;}
+    .exercise-item:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 8px 20px rgba(0,0,0,.15);background:var(--accent);color:#fff;}
+
+    /* accent colors + light backgrounds */
+    .group--petto  {--accent:var(--petto);  background:rgba(231, 76,60,.08); border-left:12px solid var(--accent);} .group--petto  .exercise-item{background:rgba(231,76,60,.15);}  
+    .group--schiena{--accent:var(--schiena);background:rgba( 52,152,219,.08);border-left:12px solid var(--accent);} .group--schiena .exercise-item{background:rgba(52,152,219,.15);}  
+    .group--gambe  {--accent:var(--gambe);  background:rgba( 39,174,96,.08); border-left:12px solid var(--accent);} .group--gambe  .exercise-item{background:rgba(39,174,96,.15);}  
+    .group--spalle {--accent:var(--spalle); background:rgba(230,134,34,.08);border-left:12px solid var(--accent);} .group--spalle .exercise-item{background:rgba(230,134,34,.15);}  
+    .group--braccia{--accent:var(--braccia);background:rgba(155, 89,182,.08);border-left:12px solid var(--accent);} .group--braccia .exercise-item{background:rgba(155,89,182,.15);}  
+    .group--addome {--accent:var(--addome); background:rgba(241,196,15,.10);border-left:12px solid var(--accent);} .group--addome .exercise-item{background:rgba(241,196,15,.20);}  
+
+    /* ------------------ SIDE PANEL ------------------ */
+    .exercise-panel{position:fixed;top:0;right:0;width:380px;max-width:90%;height:100%;background:#ffffffdd;backdrop-filter:blur(4px);box-shadow:-8px 0 24px rgba(0,0,0,.18);transform:translateX(100%);transition:transform .35s ease;z-index:200;padding:40px 28px 60px;overflow-y:auto;display:flex;flex-direction:column;gap:28px;}
+    .exercise-panel.open{transform:translateX(0);}
+    .panel-close{align-self:flex-end;background:none;border:none;font-size:32px;cursor:pointer;line-height:1;opacity:.6;}
+    .panel-title{margin:0;font-size:26px;font-weight:700;}
+    .panel-description{font-size:15px;line-height:1.6;}
+    .panel-image{width:100%;border-radius:14px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.15);}
+  </style>
+</head>
+<body>
+  <!-- HEADER di navigazione basilare -->
+  <header>
+    <a href="index.html" class="logo-container" style="text-decoration:none;color:inherit">
+      <div class="logo"></div>
+      <div class="title"><h1>MindFit</h1><p>torna alla home</p></div>
+    </a>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Allena mente e corpo</h2>
+      <p>Scopri gli esercizi giusti per ogni muscolo</p>
+      <a href="#groups" class="hero-btn">Esplora esercizi ↓</a>
+    </div>
+  </section>
+
+  <!-- MAIN LISTA ESERCIZI -->
+  <main id="groups" class="exercise-groups">
+    <h1 class="page-heading">Allenamento</h1>
+    <input type="search" id="search" placeholder="Cerca esercizio…" />
+
+    <!-- PETTO -->
+    <section class="group group--petto">
+      <h2 class="group-title">Petto</h2>
+      <div class="group-exercises">
+        <button class="exercise-item">Panca Piana</button>
+        <button class="exercise-item">Panca Inclinata Manubri</button>
+        <button class="exercise-item">Croci Manubri</button>
+        <button class="exercise-item">Dips alle Parallele</button>
+        <button class="exercise-item">Chest Press Machine</button>
+        <button class="exercise-item">Pullover</button>
+      </div>
+    </section>
+
+    <!-- SCHIENA -->
+    <section class="group group--schiena">
+      <h2 class="group-title">Schiena</h2>
+      <div class="group-exercises">
+        <button class="exercise-item">Rematore Bilanciere</button>
+        <button class="exercise-item">Lat Machine</button>
+        <button class="exercise-item">Pull‑up</button>
+        <button class="exercise-item">Pulley Basso</button>
+        <button class="exercise-item">Stacchi da Terra</button>
+        <button class="exercise-item">Hyperextension</button>
+      </div>
+    </section>
+
+    <!-- GAMBE -->
+    <section class="group group--gambe">
+      <h2 class="group-title">Gambe</h2>
+      <div class="group-exercises">
+        <button class="exercise-item">Squat</button>
+        <button class="exercise-item">Affondi</button>
+        <button class="exercise-item">Leg Press</button>
+        <button class="exercise-item">Stacco Rumeno</button>
+        <button class="exercise-item">Calf Raise</button>
+        <button class="exercise-item">Hack Squat</button>
+      </div>
+    </section>
+
+    <!-- SPALLE -->
+    <section class="group group--spalle">
+      <h2 class="group-title">Spalle</h2>
+      <div class="group-exercises">
+        <button class="exercise-item">Military Press</button>
+        <button class="exercise-item">Alzate Laterali</button>
+        <button class="exercise-item">Arnold Press</button>
+        <button class="exercise-item">Alzate Frontali</button>
+        <button class="exercise-item">Scrollate</button>
+        <button class="exercise-item">Face Pull</button>
+      </div>
+    </section>
+
+    <!-- BRACCIA -->
+    <section class="group group--braccia">
+      <h2 class="group-title">Braccia</h2>
+      <div class="group-exercises">
+        <button class="exercise-item">Curl Bilanciere</button>
+        <button class="exercise-item">Curl Martello</button>
+        <button class="exercise-item">French Press</button>
+        <button class="exercise-item">Pushdown al Cavo</button>
+        <button class="exercise-item">Curl Concentrato</button>
+        <button class="exercise-item">Estensioni Tricipiti Manubrio</button>
+      </div>
+    </section>
+
+    <!-- ADDOME -->
+    <section class="group group--addome">
+      <h2 class="group-title">Addome</h2>
+      <div class="group-exercises">
+        <button class="exercise-item">Plank</button>
+        <button class="exercise-item">Crunch</button>
+        <button class="exercise-item">Russian Twist</button>
+        <button class="exercise-item">Leg Raise</button>
+        <button class="exercise-item">Bicycle Crunch</button>
+        <button class="exercise-item">Mountain Climber</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PANNELLO DETTAGLIO ESERCIZIO -->
+  <aside class="exercise-panel" aria-hidden="true">
+    <button class="panel-close" aria-label="Chiudi pannello">&times;</button>
+    <h3 class="panel-title">Titolo esercizio</h3>
+    <p class="panel-description">Seleziona un esercizio per vedere i dettagli.</p>
+    <img class="panel-image" src="" alt="Immagine esercizio" />
+  </aside>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      /* ----------- FILTRO DI RICERCA ----------- */
+      const search = document.getElementById('search');
+      if (search) {
+        search.addEventListener('input', e => {
+          const q = e.target.value.toLowerCase();
+          document.querySelectorAll('.exercise-item').forEach(btn => {
+            btn.style.display = btn.textContent.toLowerCase().includes(q) ? '' : 'none';
+          });
+        });
+      }
+
+    const exerciseData = {
+  /* ------- PETTO ------- */
+  "Panca Piana": {
+    desc: "Esercizio multiarticolare base per petto, tricipiti e deltoidi anteriori. Movimento controllato con scapole addotte e piedi ben saldi.",
+    img: "img/panca_piana.jpg",
+  },
+  "Panca Inclinata Manubri": {
+    desc: "Versione inclinata con manubri per enfatizzare la parte clavicolare del pettorale e migliorare la coordinazione muscolare.",
+    img: "img/panca_inclinata_manubri.jpg",
+  },
+  "Croci Manubri": {
+    desc: "Isolamento dei pettorali: arco a braccia semi-flesse, focus sul massimo allungamento e contrazione.",
+    img: "img/croci_manubri.jpg",
+  },
+  "Dips alle Parallele": {
+    desc: "Dip per petto e tricipiti: inclina leggermente il busto in avanti per coinvolgere maggiormente il pettorale.",
+    img: "img/dips_parallele.jpg",
+  },
+  "Chest Press Machine": {
+    desc: "Spinta guidata su macchina; stabile e sicura per sovraccaricare il petto riducendo lo stress articolare.",
+    img: "img/chest_press_machine.jpg",
+  },
+  "Pullover": {
+    desc: "Esercizio di transizione petto-schiena che allunga la cassa toracica e stimola parte alta del pettorale e gran dorsale.",
+    img: "img/pullover.jpg",
+  },
+
+  /* ------- SCHIENA ------- */
+  "Rematore Bilanciere": {
+    desc: "Fondamentale per spessore dorsale; mantieni schiena neutra e tira il bilanciere verso l’ombelico.",
+    img: "img/rematore_bilanciere.jpg",
+  },
+  "Lat Machine": {
+    desc: "Trazioni al cavo dall’alto per larghezza dorsale; scapole depresse e gomiti in linea con il tronco.",
+    img: "img/lat_machine.jpg",
+  },
+  "Pull-up": {
+    desc: "Trazioni alla sbarra a corpo libero: grande attivazione di dorsali, bicipiti e core.",
+    img: "img/pull_up.jpg",
+  },
+  "Pulley Basso": {
+    desc: "Rematore al cavo orizzontale: ottimo per mid-back e parte centrale delle scapole.",
+    img: "img/pulley_basso.jpg",
+  },
+  "Stacchi da Terra": {
+    desc: "Power-lift totale: coinvolge catena posteriore, core e presa. Tecnica e postura sono cruciali.",
+    img: "img/stacchi_da_terra.jpg",
+  },
+  "Hyperextension": {
+    desc: "Estensioni lombari: rafforzano erettori spinali e glutei, utili come complementare agli stacchi.",
+    img: "img/hyperextension.jpg",
+  },
+
+  /* ------- GAMBE ------- */
+  "Squat": {
+    desc: "Regina degli esercizi per quadricipiti, glutei e core; scendi sotto il parallelo mantenendo la schiena neutra.",
+    img: "img/squat.jpg",
+  },
+  "Affondi": {
+    desc: "Passo in avanti o indietro per lavorare quadricipiti e glutei in modo unilaterale, migliorando l’equilibrio.",
+    img: "img/affondi.jpg",
+  },
+  "Leg Press": {
+    desc: "Spinta su macchina: consente carichi elevati con minor stress lombare rispetto allo squat.",
+    img: "img/leg_press.jpg",
+  },
+  "Stacco Rumeno": {
+    desc: "Variante degli stacchi focalizzata su femorali e glutei; mantieni ginocchia leggermente flesse.",
+    img: "img/stacco_rumeno.jpg",
+  },
+  "Calf Raise": {
+    desc: "Sollevamento sui polpacci per gastrocnemio e soleo; completa estensione e contrazione in alto.",
+    img: "img/calf_raise.jpg",
+  },
+  "Hack Squat": {
+    desc: "Squat guidato che enfatizza quadricipiti riducendo la componente di equilibrio.",
+    img: "img/hack_squat.jpg",
+  },
+
+  /* ------- SPALLE ------- */
+  "Military Press": {
+    desc: "Spinta verticale multiarticolare per deltoidi anteriori e tricipiti; core contratto e schiena neutra.",
+    img: "img/military_press.jpg",
+  },
+  "Alzate Laterali": {
+    desc: "Isolamento del deltoide laterale: braccia leggermente ruotate in avanti, movimento controllato.",
+    img: "img/alzate_laterali.jpg",
+  },
+  "Arnold Press": {
+    desc: "Press con rotazione del manubrio che coinvolge tutte le porzioni del deltoide.",
+    img: "img/arnold_press.jpg",
+  },
+  "Alzate Frontali": {
+    desc: "Sollevamento frontale per deltoide anteriore; usa manubri o bilanciere EZ.",
+    img: "img/alzate_frontali.jpg",
+  },
+  "Scrollate": {
+    desc: "Shrug per trapezio superiore: spalle verso le orecchie mantenendo braccia distese.",
+    img: "img/scrollate.jpg",
+  },
+  "Face Pull": {
+    desc: "Trazione al cavo verso il viso; rinforza deltoidi posteriori e cuffia dei rotatori.",
+    img: "img/face_pull.jpg",
+  },
+
+  /* ------- BRACCIA ------- */
+  "Curl Bilanciere": {
+    desc: "Esercizio base per bicipiti; evita lo slancio mantenendo gomiti fermi.",
+    img: "img/curl_bilanciere.jpg",
+  },
+  "Curl Martello": {
+    desc: "Impugnatura neutra per brachiale e brachioradiale; ottimo per lo spessore dell’avambraccio.",
+    img: "img/curl_martello.jpg",
+  },
+  "French Press": {
+    desc: "Estensione sopra la testa per tricipiti; attenzione alla stabilità dei gomiti.",
+    img: "img/french_press.jpg",
+  },
+  "Pushdown al Cavo": {
+    desc: "Gran classico per concentrare il lavoro sui tricipiti, con varianti a corda o sbarra.",
+    img: "img/pushdown_cavo.jpg",
+  },
+  "Curl Concentrato": {
+    desc: "Curl seduto a braccio singolo per isolare il picco del bicipite.",
+    img: "img/curl_concentrato.jpg",
+  },
+  "Estensioni Tricipiti Manubrio": {
+    desc: "Estensioni dietro la testa a un solo manubrio o due manubri, focus sul capo lungo del tricipite.",
+    img: "img/estensioni_tricipiti.jpg",
+  },
+
+  /* ------- ADDOME ------- */
+  "Plank": {
+    desc: "Isometria per core: corpo in linea retta, glutei contratti e addome in tenuta.",
+    img: "img/plank.jpg",
+  },
+  "Crunch": {
+    desc: "Flesso-estensione del tronco per retto addominale; evita di tirare il collo.",
+    img: "img/crunch.jpg",
+  },
+  "Russian Twist": {
+    desc: "Rotazioni del busto per obliqui; mantieni core saldo e movimento controllato.",
+    img: "img/russian_twist.jpg",
+  },
+  "Leg Raise": {
+    desc: "Sollevamento gambe per parte bassa dell’addome; evita di inarcare la zona lombare.",
+    img: "img/leg_raise.jpg",
+  },
+  "Bicycle Crunch": {
+    desc: "Crunch alternato con torsione, stimola sia retti che obliqui addominali.",
+    img: "img/bicycle_crunch.jpg",
+  },
+  "Mountain Climber": {
+    desc: "Esercizio dinamico cardio-core: porta le ginocchia al petto in rapida successione.",
+    img: "img/mountain_climber.jpg",
+  },
+};
+
+
+      /* ----------- SIDE PANEL ----------- */
+      const panel     = document.querySelector('.exercise-panel');
+      const titleEl   = panel.querySelector('.panel-title');
+      const descEl    = panel.querySelector('.panel-description');
+      const imgEl     = panel.querySelector('.panel-image');
+      const closeBtn  = panel.querySelector('.panel-close');
+
+      document.querySelectorAll('.exercise-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const name = btn.textContent.trim();
+          const data = exerciseData[name] || { desc: 'Contenuto in arrivo.', img: 'img/placeholder.jpg' };
+          titleEl.textContent = name;
+          descEl.textContent  = data.desc;
+          imgEl.src           = data.img;
+          imgEl.alt           = `Esecuzione di ${name}`;
+          panel.classList.add('open');
+          panel.setAttribute('aria-hidden', 'false');
+        });
+      });
+
+      closeBtn.addEventListener('click', () => {
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+      });
+    });
+  </script>
+</body>
+</html>
