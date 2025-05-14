@@ -1,9 +1,9 @@
 body {
+  background-color: #fffeece1;
+  background-size: 100%;
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background: #fdfdfd;
-  color: #333;
 }
 
 header {
@@ -12,7 +12,7 @@ header {
   align-items: center;
   padding: 20px 40px;
   border-bottom: 2px solid #eee;
-  background: #f5f5f5; /* Sfondo header più semplice */
+  background: #fcfc9fbb; /* Sfondo header più semplice */
 }
 
 .logo-container {
@@ -35,7 +35,8 @@ header {
 .logo {
   width: 60px;
   height: 60px;
-  background: radial-gradient(circle, #FFD700, #FFC300);
+  background-image: url("img/logo_1.png");
+  background-size: 60px;
   border-radius: 50%;
   margin-right: 15px;
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
@@ -74,74 +75,96 @@ header {
   border-radius: 2px;
 }
 
+
 main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: 40px;
-  padding: 60px 20px;
-  flex-wrap: wrap;
-  background: #fdfdfd;
+  padding: 40px 20px;
 }
 
 .card {
-  width: 280px;
-  padding: 20px;
+  display: flex;
+  width: 90%;
+  max-width: 1000px;
   border-radius: 20px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
-.card:hover {
-  transform: scale(1.07);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+.sport{
+
+  background-color: #fcc37e;
+}
+
+.meditazione{
+
+  background-color: #56beffd1;
+}
+
+.abitudini{
+  background-color: #a6f066e7;
+}
+.card hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
 }
 
 .card img {
-  width: 100%;
-  height: 200px;
+  width: 300px;
+  height: auto;
   object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 20px;
 }
 
-button {
-  padding: 12px 24px;
-  font-size: 16px;
-  border: outset;
-  border-radius: 30px;
-  background: #dcdcdc; /* Bottone più sobrio */
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1; /* Il testo occupa tutto lo spazio disponibile */
+}
+
+.card-content h2 {
+  margin: 0 0 10px;
+  font-size: 28px;
   color: #333;
+}
+
+.card-content p {
+  margin: 0 0 20px;
+  color: #555;
+  font-size: 18px;
+}
+
+.card-button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  border: none;
+  background-color: #fefefe;
+  color: rgb(58, 57, 57);
   font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  font-size: 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background-color 0.3s;
 }
 
-button:hover {
-  background: #c0c0c0; /* Hover più chiaro e semplice */
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+.card-button:hover {
+  background-color: #b0b0ab;
 }
 
-.yellow {
-  background-color:#f4d745;
-}
-
-.green {
-  background-color: #b9f772;
-}
-
-.blue {
-  background-color: #9ddbf8;
-}
 
 /* Sidebar con bordo arrotondato a destra */
 .sidebar {
-  position: fixed;
+  position:fixed;
   top: 150px;
   left: 0;
   width: 170px;
   height: 60%;
-  background: radial-gradient(circle, #f7e896,#f4d745);
+  background: radial-gradient(circle, #f5f4ef,#f9f588);
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
@@ -169,18 +192,4 @@ button:hover {
   font-style: italic;
   max-width: 180px;
 }
-.exercise-list {
-  max-width: 800px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
 
-.exercise-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 24px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.08);
-}
-
-  

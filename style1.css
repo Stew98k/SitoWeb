@@ -1,0 +1,135 @@
+body {
+    background-color: #72e8fae1;
+    background-size: 100%;
+    background-attachment:scroll;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 2px solid #b6b6b6;
+    background: #f7fffab1; /* Sfondo header più semplice */
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    animation: slideIn 1s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .logo {
+    width: 60px;
+    height: 60px;
+    background-image: url("img/logo_1.png");
+    background-size: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    flex-shrink: 0;
+  }
+  
+  .title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .title h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #333;
+  }
+  
+  .title p {
+    margin: 0;
+    font-size: 18px;
+    color: #7e7e7e;
+    opacity: 0.9;
+  }
+  
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .menu .line {
+    width: 30px;
+    height: 3px;
+    background-color: #777;
+    border-radius: 2px;
+  }
+
+  .meditation-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonne fisse */
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .meditation-box {
+    background-color: #f5f5f592;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .meditation-box img {
+    width: 350px;
+    height: 200px;
+    padding: 20px;
+    border-radius: 20px;
+    object-fit: cover;
+   
+  }
+  
+  .meditation-box h2 {
+    margin: 15px 0;
+    font-size: 1.5em;
+    color: #333;
+  }
+  
+  .meditation-box:hover {
+    transform: translateY(-5px);
+  }
+  .listen-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none; 
+    padding: 12px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .listen-button:hover {
+    background-color: #45a049;
+  }
+
+  .meditation-box audio {
+    width: 80%;
+    padding: 10px;
+    margin-top: 10px;
+  }
