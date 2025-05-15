@@ -1,6 +1,33 @@
 /* ---------- SOLO LOGO (copiato da style1) ---------- */
  body{background:#fafafa;font-family:"Poppins",sans-serif;} 
 
+.allenamento-header {
+  width: 100%;
+  text-align: center;
+  padding: 60px 20px 30px;
+  background-image: url("img/palestra.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  color: white;
+}
+
+.allenamento-header h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.allenamento-header p {
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+
 
 
  header {
@@ -123,3 +150,16 @@
     .panel-title{margin:0;font-size:26px;font-weight:700;}
     .panel-description{font-size:15px;line-height:1.6;}
     .panel-image{width:100%;border-radius:14px;object-fit:cover;box-shadow:0 6px 18px rgba(0,0,0,.15);}
+
+    /* ---------- Tweaks pannello esercizi ---------- */
+.panel-image{
+  max-width:100%;     /* mai più larga del pannello              */
+  height:auto;        /* ridimensionata proporzionalmente        */
+  max-height:250px;   /* ↓ alza o abbassa se ti serve più spazio */
+}
+
+.exercise-panel{
+  display:flex;       /* impila titolo, testo, immagine, link    */
+  flex-direction:column;
+  overflow-y:auto;    /* se l'immagine è grande compare scrollbar*/
+}

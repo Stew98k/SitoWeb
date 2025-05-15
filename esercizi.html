@@ -21,14 +21,13 @@
   <a href="index.html" class="home-button-in-header">Home</a>
 </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Allenamento</h2>
-      <p>Scopri gli esercizi giusti per ogni muscolo</p>
-      <input type="search" id="search" placeholder="Cerca esercizio…" />
+  <div class="allenamento-header">
+      <h1>ALLENAMENTO</h1>
+      <p>SCOPRI IL POTERE DELL'ALLENAMENTO SUL TUO CORPO</p>
     </div>
-  </section>
+
+
+
 
   <!-- MAIN LISTA ESERCIZI -->
   <main id="groups" class="exercise-groups">
@@ -53,7 +52,7 @@
       <div class="group-exercises">
         <button class="exercise-item">Rematore Bilanciere</button>
         <button class="exercise-item">Lat Machine</button>
-        <button class="exercise-item">Pull‑up</button>
+        <button class="exercise-item">Pull-up</button>
         <button class="exercise-item">Pulley Basso</button>
         <button class="exercise-item">Stacchi da Terra</button>
         <button class="exercise-item">Hyperextension</button>
@@ -121,7 +120,7 @@
     <p class="panel-description">Seleziona un esercizio per vedere i dettagli.</p>
     <img class="panel-image" src="" alt="Immagine esercizio" />
     <!-- Nuovo bottone/link che apre la pagina dedicata all'esercizio -->
-    <a class="panel-link" href="#" target="_blank" rel="noopener" style="display:none">Apri pagina esercizio →</a>
+      
   </aside>
 
 
@@ -175,10 +174,11 @@
     desc: "Trazioni al cavo dall’alto per larghezza dorsale; scapole depresse e gomiti in linea con il tronco.",
     img: "img/lat_machine.jpg",
   },
-  "Pull-up": {
-    desc: "Trazioni alla sbarra a corpo libero: grande attivazione di dorsali, bicipiti e core.",
-    img: "img/pull_up.jpg",
+  "Pull-up": {  // con U+2011
+  desc: "Trazioni alla sbarra a corpo libero …",
+  img:  "img/pull_up.jpg"
   },
+
   "Pulley Basso": {
     desc: "Rematore al cavo orizzontale: ottimo per mid-back e parte centrale delle scapole.",
     img: "img/pulley_basso.jpg",
