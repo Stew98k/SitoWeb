@@ -86,16 +86,16 @@ main {
 
 .sport{
 
-  background-color: #fcc37e;
+  background-color: #ffb152;
 }
 
 .meditazione{
 
-  background-color: #56beffd1;
+  background-color: #65c0f8eb;
 }
 
 .abitudini{
-  background-color: #a6f066e7;
+  background-color: #a9fe5fe7;
 }
 .card hover {
   transform: scale(1.02);
@@ -153,7 +153,7 @@ main {
   left: 0;
   width: 170px;
   height: 60%;
-  background: radial-gradient(circle, #f5f4ef,#f9f588);
+  background: radial-gradient(circle, #ffffff, #ffed49d2);
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
@@ -182,3 +182,71 @@ main {
   max-width: 180px;
 }
 
+.quick-nav-widget {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: #ffffff;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.quick-nav-widget h3 {
+  font-size: 16px;
+  color: #4CAF50;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.quick-nav-widget .quick-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-nav-widget .quick-links li {
+  margin-bottom: 10px;
+}
+
+.quick-nav-widget .quick-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: color 0.2s ease;
+}
+
+.quick-nav-widget .quick-links a:hover {
+  color: #f9c24b;
+  text-decoration: underline;
+}
+
+
+.site-footer {
+  background: #ffed49d2;
+  color: rgb(92, 92, 92);
+  text-align: center;
+  padding: 25px 10px;
+  margin-top: 40px;
+  font-size: 15px;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-nav a {
+  color: #f9c24b;
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
