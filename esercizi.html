@@ -8,26 +8,31 @@
 </head>
 <body>
   <!-- HEADER di navigazione basilare -->
-  <header>
-    <a href="index.html" class="logo-container" style="text-decoration:none;color:inherit">
-      <div class="logo"></div>
-      <div class="title"><h1>MindFit</h1><p>torna alla home</p></div>
-    </a>
-  </header>
+  
+   <header>
+  <a href="index.html" class="logo-container" style="text-decoration:none;color:inherit">
+    <div class="logo"></div>
+    <div class="title">
+      <h1>MindFit</h1>
+      <p>mente in forma</p>
+    </div>
+  </a>
+
+  <a href="index.html" class="home-button-in-header">Home</a>
+</header>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <h2>Allena mente e corpo</h2>
+      <h2>Allenamento</h2>
       <p>Scopri gli esercizi giusti per ogni muscolo</p>
-      <a href="#groups" class="hero-btn">Esplora esercizi ↓</a>
+      <input type="search" id="search" placeholder="Cerca esercizio…" />
     </div>
   </section>
 
   <!-- MAIN LISTA ESERCIZI -->
   <main id="groups" class="exercise-groups">
-    <h1 class="page-heading">Allenamento</h1>
-    <input type="search" id="search" placeholder="Cerca esercizio…" />
+    
 
     <!-- PETTO -->
     <section class="group group--petto">
@@ -115,7 +120,10 @@
     <h3 class="panel-title">Titolo esercizio</h3>
     <p class="panel-description">Seleziona un esercizio per vedere i dettagli.</p>
     <img class="panel-image" src="" alt="Immagine esercizio" />
+    <!-- Nuovo bottone/link che apre la pagina dedicata all'esercizio -->
+    <a class="panel-link" href="#" target="_blank" rel="noopener" style="display:none">Apri pagina esercizio →</a>
   </aside>
+
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -295,7 +303,14 @@
       const titleEl   = panel.querySelector('.panel-title');
       const descEl    = panel.querySelector('.panel-description');
       const imgEl     = panel.querySelector('.panel-image');
+      const linkEl    = panel.querySelector('.panel-link');
       const closeBtn  = panel.querySelector('.panel-close');
+
+      // Utility per generare uno slug da usare come nome file
+      const slugify = str => str.toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // rimuove accenti
+        .replace(/[^a-z0-9]+/g, '_')                       // sostituisce con _
+        .replace(/^_+|_+$/g, '') + '.html';
 
       document.querySelectorAll('.exercise-item').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -305,6 +320,12 @@
           descEl.textContent  = data.desc;
           imgEl.src           = data.img;
           imgEl.alt           = `Esecuzione di ${name}`;
+
+          // Genera href alla pagina dell'esercizio e mostra il link
+          const slug = slugify(name);
+          linkEl.href = `esercizi/${slug}`; // cartella "esercizi" con i dettagli
+          linkEl.style.display = 'inline-block';
+
           panel.classList.add('open');
           panel.setAttribute('aria-hidden', 'false');
         });
