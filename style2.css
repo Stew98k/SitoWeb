@@ -202,3 +202,28 @@ body{
   margin:20px 0 0;   /* distanza da ciò che segue */
 }
 
+/* ---------- ACCORDION (details / summary) ---------- */
+
+/* togli il pallino default del summary */
+.group-title{
+  list-style:none;
+  cursor:pointer;
+  user-select:none;
+}
+
+/* freccina animata */
+.group-title::after{
+  content:"▾";
+  margin-left:8px;
+  transition:transform .3s;
+}
+
+/* quando il pannello è aperto ruoto la freccia */
+.group[open] > .group-title::after{
+  transform:rotate(180deg);
+}
+
+/* estetica facoltativa: bordo separatore */
+.group:not(:last-child){
+  margin-bottom:12px;
+}
