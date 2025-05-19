@@ -196,3 +196,9 @@ body{
 .torna-indietro-button:hover {
   background-color: #3e9742;
 }
+.search-wrapper{
+  display:flex;
+  justify-content:center;
+  margin:20px 0 0;   /* distanza da ciò che segue */
+}
+
