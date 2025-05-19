@@ -1,11 +1,11 @@
 /* ---------- SOLO LOGO (copiato da style1) ---------- */
- body{background:#fafafa;font-family:"Poppins",sans-serif;} 
+ body{background:#fafafa;font-family:"Poppins",sans-serif; margin: 0;} 
 
 .allenamento-header {
   width: 100%;
   text-align: center;
   padding: 60px 20px 30px;
-  background-image: url("img/palestra.gif");
+  background-image: url("img/allenamento.gif");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -108,6 +108,7 @@
     
     :root{
       --petto:#e74c3c;--schiena:#3498db;--gambe:#27ae60;--spalle:#e67e22;--braccia:#9b59b6;--addome:#f1c40f;
+      --mindfit-orange: #FFB152;
     }
 
     /* ------------------ RESET & GLOBAL ------------------ */
@@ -162,4 +163,36 @@
   display:flex;       /* impila titolo, testo, immagine, link    */
   flex-direction:column;
   overflow-y:auto;    /* se l'immagine è grande compare scrollbar*/
+}
+body{
+  background: var(--mindfit-orange) !important;
+}
+.group{
+  /* bianco pieno: l’arancione del body non filtra più */
+  background:#fff;
+}
+.group--petto  {background:#fff linear-gradient(rgba(231, 76, 60, .08),   rgba(231, 76, 60, .08));}
+.group--schiena{background:#fff linear-gradient(rgba( 52,152,219, .08),   rgba( 52,152,219, .08));}
+.group--gambe  {background:#fff linear-gradient(rgba( 39,174, 96, .08),   rgba( 39,174, 96, .08));}
+.group--spalle {background:#fff linear-gradient(rgba(230,134, 34, .08),   rgba(230,134, 34, .08));}
+.group--braccia{background:#fff linear-gradient(rgba(155, 89,182, .08),   rgba(155, 89,182, .08));}
+.group--addome {background:#fff linear-gradient(rgba(241,196, 15, .10),   rgba(241,196, 15, .10));}
+.torna-indietro-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 60px 40px;
+}
+
+.torna-indietro-button {
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.torna-indietro-button:hover {
+  background-color: #3e9742;
 }
