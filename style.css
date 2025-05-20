@@ -250,3 +250,85 @@ main {
 .footer-nav a:hover {
   text-decoration: underline;
 }
+
+.chi-siamo-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.chi-siamo-box {
+  display: flex;
+  align-items: center;
+  background-color: #fbaa1f9b;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  max-width: 480px;
+  padding: 30px;
+  gap: 20px;
+  flex: 1 1 420px;
+}
+
+.chi-siamo-img {
+  flex: 1;
+  max-width: 150px;
+}
+
+.chi-siamo-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.chi-siamo-info {
+  flex: 2;
+}
+
+.chi-siamo-info h2 {
+  font-size: 24px;
+  color: #5b5b5b;
+  margin-bottom: 10px;
+}
+
+.chi-siamo-info p {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .chi-siamo-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .chi-siamo-box {
+    flex-direction: column;
+    text-align: center;
+    max-width: 100%;
+  }
+  .chi-siamo-img,
+  .chi-siamo-info {
+    width: 100%;
+  }
+}
+
+.home-button-in-header {
+  background-color: #f9c24b;
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease;
+}
+
+.home-button-in-header:hover {
+  background-color: #e0a534;
+}
